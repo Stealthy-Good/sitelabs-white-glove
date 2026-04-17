@@ -33,7 +33,6 @@ export interface PricingConfig {
   perGapFee: number;
   perMtmFee: number;
   perInterventionFee: number;
-  perTaskTrialRevSharePctPharmacy: number;
 }
 
 export interface ProgramRevenueBreakdown {

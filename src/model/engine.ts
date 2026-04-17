@@ -166,7 +166,7 @@ export function sitelabsRevenuePerPharmacy(a: Assumptions): {
         tc.gaps * p.perGapFee +
         tc.mtms * p.perMtmFee +
         tc.interventions * p.perInterventionFee;
-      pharmacyTrialPct = p.perTaskTrialRevSharePctPharmacy;
+      // Trial rev share is the same main setting across all pricing models
       break;
     }
   }
@@ -290,7 +290,9 @@ export function computeProjection(
 
     const activePharmacies = cohorts.reduce((s, c) => s + c.count, 0);
 
-    // Determine rep count needed
+    // Hire reps per spec: step function on raw pharmaciesPerRep (no
+    // utilization). Note: per-pharmacy P&L allocates rep cost using
+    // pharmaciesPerRep × utilization, so the two layers may diverge slightly.
     const requiredReps = Math.max(
       1,
       Math.ceil(safeDiv(activePharmacies, a.pharmaciesPerRep)),

@@ -156,6 +156,7 @@ export default function App() {
             perPharm={perPharm}
             rep={rep}
             breakEven={breakEven}
+            projectionBreakEvenMonth={proj.breakEvenMonth}
           />
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">

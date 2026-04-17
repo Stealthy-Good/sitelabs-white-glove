@@ -65,17 +65,23 @@ export function ViabilityCards({
   perPharm,
   rep,
   breakEven,
+  projectionBreakEvenMonth,
 }: {
   perPharm: PerPharmacyPnL;
   rep: RepPnL;
   breakEven: number | null;
+  projectionBreakEvenMonth: number | null;
 }) {
+  const projBEText =
+    projectionBreakEvenMonth === null
+      ? "36-mo projection never reaches monthly break-even (ongoing CAC + ramp drag)"
+      : `36-mo projection turns monthly positive at month ${projectionBreakEvenMonth}`;
   return (
     <div className="flex flex-col gap-3 sm:flex-row">
       <Card
         title="Per-pharmacy viability"
         value={fmtUSD(perPharm.contributionMargin)}
-        subtitle={`Annual contribution margin — green > $3K, yellow $1–3K, red < $1K`}
+        subtitle={`Annual contribution margin (steady state) — green > $3K, yellow $1–3K, red < $1K`}
         status={perPharmacyStatus(perPharm.contributionMargin)}
       />
       <Card
@@ -87,7 +93,7 @@ export function ViabilityCards({
       <Card
         title="Break-even pharmacies"
         value={breakEven === null ? "Not reached" : `${breakEven}`}
-        subtitle={`Pharmacy count for company-level profitability — green ≤ 30, red > 75`}
+        subtitle={`Steady-state (all ramped, growth paused). ${projBEText}.`}
         status={breakEvenStatus(breakEven)}
       />
     </div>

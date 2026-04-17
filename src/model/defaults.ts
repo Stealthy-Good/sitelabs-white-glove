@@ -46,7 +46,6 @@ export const BASE_ASSUMPTIONS: Assumptions = {
     perGapFee: 50,
     perMtmFee: 75,
     perInterventionFee: 25,
-    perTaskTrialRevSharePctPharmacy: 0.2,
   },
 
   repFullyLoadedAnnual: 95000,
