@@ -9,7 +9,13 @@ import {
 import { TornadoChart } from "./components/TornadoChart";
 import { PricingComparison } from "./components/PricingComparison";
 import { ScenarioTools } from "./components/ScenarioTools";
+import { EconomicPresets } from "./components/EconomicPresets";
 import { BASE_ASSUMPTIONS, applyPreset } from "./model/defaults";
+import {
+  ECONOMIC_PRESETS,
+  applyEconomicPreset,
+  type EconomicPresetId,
+} from "./model/economicPresets";
 import type { Assumptions, SavedScenario } from "./model/types";
 import {
   computePerPharmacy,
@@ -94,6 +100,11 @@ export default function App() {
     setA((cur) => applyPreset(cur, p));
   };
 
+  const onLoadEconomicPreset = (id: EconomicPresetId) => {
+    const preset = ECONOMIC_PRESETS.find((p) => p.id === id);
+    if (preset) setA(applyEconomicPreset(preset));
+  };
+
   const saveScenario = (name: string) => {
     const s: SavedScenario = {
       id: `scn_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
@@ -138,6 +149,10 @@ export default function App() {
           </button>
         </div>
       </header>
+
+      <div className="mx-auto max-w-[1600px] px-4 pt-4">
+        <EconomicPresets current={a} onLoad={onLoadEconomicPreset} />
+      </div>
 
       <main className="mx-auto grid max-w-[1600px] grid-cols-1 gap-4 p-4 lg:grid-cols-[minmax(320px,380px)_1fr]">
         <aside className="lg:sticky lg:top-4 lg:h-[calc(100vh-2rem)] lg:overflow-y-auto lg:pr-2">
