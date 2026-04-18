@@ -165,6 +165,11 @@ export function RepTable({ rep }: { rep: RepPnL }) {
           />
         </tbody>
       </table>
+      <p className="border-t border-slate-100 px-3 py-2 text-xs text-slate-500">
+        Marginal view: rep salary + platform only. Excludes QHIN, onboarding,
+        CAC, and overhead — will look healthier than the fully-loaded
+        per-pharmacy P&L.
+      </p>
     </div>
   );
 }

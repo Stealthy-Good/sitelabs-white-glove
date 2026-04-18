@@ -200,6 +200,15 @@ export default function App() {
             All figures are modeled estimates. Revenue assumptions are steady
             state post-ramp unless labeled otherwise. Scenarios and assumptions
             are stored in <code>localStorage</code>.
+            {" "}
+            <a
+              href="/CFO_FPA_CHEATSHEET.md"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-indigo-600 hover:text-indigo-800"
+            >
+              How these numbers work →
+            </a>
           </footer>
         </section>
       </main>
