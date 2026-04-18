@@ -93,7 +93,7 @@ export function ViabilityCards({
       <Card
         title="Break-even pharmacies"
         value={breakEven === null ? "Not reached" : `${breakEven}`}
-        subtitle={`Steady-state (all ramped, growth paused). ${projBEText}.`}
+        subtitle={`Steady-state (all ramped, growth paused). ${projBEText}. First profitable N only — P&L oscillates back into loss on each rep-hire step until the book refills.`}
         status={breakEvenStatus(breakEven)}
       />
     </div>
